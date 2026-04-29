@@ -1,0 +1,73 @@
+CHANGELOG – CARTA TOPEPIZZA
+
+==================================================
+VERSIÓN 1.0 – 2026-04-29
+==================================================
+
+Tipo de cambio:
+Actualización de precios de carta base.
+
+Responsable:
+Jose + ChatGPT (OpenAI)
+
+Objetivo:
+Actualizar precios manteniendo diseño original (tipografía, colores y estructura).
+
+--------------------------------------------------
+
+CAMBIOS REALIZADOS
+
+PIZZAS
+- Individual: 8,95€ → 10,50€
+- Mediana: 10,95€ → 13,50€
+
+GAMA LAS PANÍSIMAS
+- Crispy BBQ: 11,25€ → 13,25€
+- Topebic Mac: 10,95€ → 12,95€
+- Chili Oriental: 9,65€ → 11,65€
+
+GAMA SUPREME
+- Individual: 9,95€ → 11,50€
+- Mediana: 12,95€ → 15,50€
+
+COMPLEMENTOS
+
+NUGGETS
+- 4 uds: 4,90€ → 5,90€
+- 6 uds: 6,75€ → 7,75€
+- 8 uds: 8,50€ → 9,50€
+- 10 uds: 10,50€ → 11,50€
+
+ALITAS
+- 4 uds: 5,50€ → 6,50€
+- 6 uds: 7,95€ → 8,95€
+- 8 uds: 10,35€ → 11,35€
+- 10 uds: 12,50€ → 13,50€
+
+PAPAS
+- Bacon: 8,95€ → 10,95€
+- Trufiñas: 9,95€ → 11,95€
+- Kebab: 9,95€ → 11,95€
+
+POSTRES
+
+GOCHIS "CHIPS AHOY"
+- 8 uds: 5,25€ → 6,25€
+- 16 uds: 7,95€ → 8,95€
+
+GOCHIS "LOTUS"
+- 8 uds: 5,25€ → 6,75€
+- 16 uds: 7,95€ → 9,45€
+
+BEBIDAS
+- Refrescos: 2,00€ → 2,50€
+- Agua: 1,90€ → 2,00€
+
+--------------------------------------------------
+
+NOTAS
+- No se ha modificado diseño, tipografía ni colores.
+- Solo actualización de precios.
+
+ESTADO
+COMPLETADO
