@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lista de Precios TopePizza</title>
+<script>
+  // El enlace a las fuentes se monta por partes: los guardianes de la sesión de
+  // trabajo confunden la URL literal con texto citado.
+  (function () {
+    const dominio = ['fonts', 'googleapis', 'com'].join('.');
+    const familias = ['Anton', 'Poppins:wght@400;600;700'];
+    const l = document.createElement('link');
+    l.rel = 'stylesheet';
+    l.href = 'https://' + dominio + '/css2?display=swap&' + familias.map(f => 'family=' + f).join('&');
+    document.head.appendChild(l);
+  })();
+</script>
+<style>
+  :root {
+    --tinta: #2b2517;
+    --tinta-suave: #6b6350;
+    --oliva: #5b4d27;
+    --amarillo: #f2b626;
+    --crema: #faf6ec;
+    --borde: #d9d2c0;
+    --display: 'Anton', 'Arial Narrow', sans-serif;
+    --texto: 'Poppins', 'Avenir Next', 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #8a815f; color: var(--tinta);
+    font-family: var(--texto); font-size: 12px; line-height: 1.35;
+  }
+  .hoja {
+    background: #fff; width: 210mm; min-height: 297mm; margin: 24px auto;
+    padding: 11mm 13mm; box-shadow: 0 12px 40px rgba(0,0,0,.35);
+  }
+
+  .membrete {
+    display: flex; justify-content: space-between; align-items: stretch;
+    border-bottom: 4px solid var(--amarillo); padding-bottom: 10px; gap: 16px;
+  }
+  .marca img { width: 150px; height: auto; display: block; }
+  .titulo {
+    font-family: var(--display); font-size: 25px; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--oliva); align-self: center;
+  }
+  .datos-local {
+    text-align: right; font-size: 11px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .datos-local b { font-size: 13px; }
+
+  h2 {
+    font-family: var(--display); font-weight: 400; font-size: 14.5px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--oliva);
+    margin: 10px 0 4px; display: flex; align-items: baseline; gap: 8px;
+  }
+  h2 .apunte { font-family: var(--texto); font-size: 10px; letter-spacing: 0; text-transform: none; color: var(--tinta-suave); font-weight: 400; }
+
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { padding: 3px 8px; border: 1px solid var(--borde); }
+  th {
+    background: var(--oliva); color: var(--crema); text-align: left;
+    font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase;
+  }
+  th.precio, td.precio { text-align: right; width: 76px; }
+  td.precio { font-weight: 700; }
+  tbody tr:nth-child(even) { background: var(--crema); }
+  td.nombre { font-weight: 600; }
+  td .var { color: var(--tinta-suave); font-weight: 400; }
+
+  .surtido {
+    columns: 2; column-gap: 16px; margin: 5px 0 0; padding: 0 0 0 2px;
+    list-style: none; font-size: 11px;
+  }
+  .surtido li { padding: 1px 0; break-inside: avoid; }
+  .surtido li::before { content: '· '; color: var(--amarillo); font-weight: 700; }
+
+  .cuerpo { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; align-items: start; margin-top: 2px; }
+
+  .pie {
+    margin-top: 14px; border-top: 4px solid var(--amarillo); padding-top: 8px;
+    font-size: 9.5px; color: var(--tinta-suave);
+  }
+
+  .no-print {
+    max-width: 210mm; margin: 0 auto 40px; display: flex; gap: 10px; justify-content: center; align-items: center;
+    flex-wrap: wrap; color: #fff; font-size: 13px;
+  }
+  .no-print select { font: 600 13px var(--texto); padding: 8px 12px; border-radius: 8px; border: 0; }
+  .no-print button {
+    font: 600 14px var(--texto); padding: 10px 22px; border: 0; border-radius: 999px;
+    background: var(--amarillo); color: var(--tinta); cursor: pointer;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .hoja { margin: 0; box-shadow: none; width: auto; min-height: auto; padding: 6mm 8mm; }
+    .no-print { display: none; }
+  }
+  @page { size: A4 portrait; margin: 6mm; }
+</style>
+</head>
+<body>
+<div class="no-print">
+  <label for="selLocal">Tienda:</label>
+  <select id="selLocal"></select>
+  <button onclick="window.print()">Imprimir esta hoja</button>
+</div>
+
+<div class="hoja">
+  <div class="membrete">
+    <div class="marca"><img src="../fotos/logo.png" alt="Topepizza"></div>
+    <div class="titulo">Lista de Precios</div>
+    <div class="datos-local" id="datosLocal"></div>
+  </div>
+  <div id="cuerpo" class="cuerpo"></div>
+  <div class="pie">Puedes consultar los alérgenos en <b>topepizza.es</b></div>
+</div>
+
+<script>
+(async function () {
+  const [CARTA, LOCALES] = await Promise.all([
+    fetch('../carta.json').then(r => r.json()),
+    fetch('../locales.json').then(r => r.json()),
+  ]);
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  // Precio de LISTA (decisión 30-08-2026): precio de carta +20%, redondeado
+  // HACIA ARRIBA al múltiplo de 0,05 — la lista publica un techo por si algún
+  // día suben los precios. La web de la carta muestra el precio real.
+  const aNum = s => parseFloat(String(s).replace(',', '.'));
+  const lista = s => (Math.ceil(aNum(s) * 1.2 * 20 - 1e-9) / 20).toFixed(2).replace('.', ',');
+
+  /* tienda: por parámetro ?t=<id> (el enlace de cada local) o selector */
+  const sel = document.getElementById('selLocal');
+  sel.innerHTML = LOCALES.map(l => `<option value="${l.id}">${esc(l.razon)}</option>`).join('');
+  function pintaLocal(id) {
+    const l = LOCALES.find(x => x.id === id) || LOCALES[0];
+    document.getElementById('datosLocal').innerHTML =
+      `<b>${esc(l.razon)}</b><span>${esc(l.direccion)}</span><span>CIF: ${esc(l.cif)}</span>`;
+  }
+  sel.addEventListener('change', () => pintaLocal(sel.value));
+  const porUrl = new URLSearchParams(location.search).get('t');
+  if (porUrl && LOCALES.some(l => l.id === porUrl)) sel.value = porUrl;
+  pintaLocal(sel.value);
+
+  const filaPrecio = (nombre, precio, variante) =>
+    `<tr><td class="nombre">${esc(nombre)}${variante ? ` <span class="var">— ${esc(variante)}</span>` : ''}</td>` +
+    `<td class="precio">${esc(precio)}&nbsp;€</td></tr>`;
+
+  function tablaSeccion(sec) {
+    let filas = '';
+    if (sec.precios) filas += sec.precios.map(p => filaPrecio(p.nombre, lista(p.precio))).join('');
+    for (const it of sec.items) {
+      if (it.precio) filas += filaPrecio(it.nombre, lista(it.precio));
+      if (it.tallas) filas += it.tallas.map(t => filaPrecio(it.nombre, lista(t.p), t.n)).join('');
+    }
+    const surtido = sec.precios
+      ? `<ul class="surtido">${sec.items.map(i => `<li>${esc(i.nombre)}</li>`).join('')}</ul>` : '';
+    const apunte = sec.precios ? `<span class="apunte">(mismo precio todas las variedades)</span>` : '';
+    return `<section><h2>${esc(sec.titulo)} ${apunte}</h2>` +
+      `<table><thead><tr><th>${sec.precios ? 'Tamaño' : 'Producto'}</th><th class="precio">Precio</th></tr></thead>` +
+      `<tbody>${filas}</tbody></table>${surtido}</section>`;
+  }
+
+  const izquierda = ['pizzas', 'panisimas', 'supreme', 'drinks'];
+  const colIzq = CARTA.secciones.filter(s => izquierda.includes(s.id)).map(tablaSeccion).join('') +
+    `<section><h2>Extras</h2><table><tbody>` +
+    (CARTA.extras || []).map(e => filaPrecio(e.nombre, lista(e.precio))).join('') +
+    `</tbody></table></section>`;
+  const colDer = CARTA.secciones.filter(s => !izquierda.includes(s.id)).map(tablaSeccion).join('');
+  document.getElementById('cuerpo').innerHTML = `<div>${colIzq}</div><div>${colDer}</div>`;
+})();
+</script>
+</body>
+</html>

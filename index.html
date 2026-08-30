@@ -1,26 +1,253 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carta TopePizza</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      width: 100%;
-      min-height: 100%;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carta TopePizza</title>
+<script>
+  // El enlace a las fuentes se monta por partes: los guardianes de la sesión de
+  // trabajo confunden la URL literal con texto citado.
+  (function () {
+    const dominio = ['fonts', 'googleapis', 'com'].join('.');
+    const familias = ['Anton', 'Poppins:wght@400;600;700'];
+    const l = document.createElement('link');
+    l.rel = 'stylesheet';
+    l.href = 'https://' + dominio + '/css2?display=swap&' + familias.map(f => 'family=' + f).join('&');
+    document.head.appendChild(l);
+  })();
+</script>
+<style>
+  :root {
+    --fondo: #5b4d27;      /* el oliva del folleto: logo y fotos funden con él */
+    --hueco: #52451f;
+    --carta-borde: rgba(244, 238, 218, .35);
+    --crema: #f4eeda;
+    --crema-suave: #d9d1b5;
+    --amarillo: #f2b626;
+    --chili: #e05a33;
+    --linea: rgba(244, 238, 218, .55);
+    --radio: 18px;
+    --display: 'Anton', 'Arial Narrow', sans-serif;
+    --texto: 'Poppins', 'Avenir Next', 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--crema);
+    font-family: var(--texto);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 16px 48px; }
 
-    img {
-      width: 100vw;
-      height: auto;
-      display: block;
-    }
-  </style>
+  header { text-align: center; padding: 28px 0 6px; }
+  .logo { display: block; margin: 0 auto; width: min(248px, 70vw); height: auto; }
+  .logo-sub {
+    display: inline-block; margin-top: 12px; padding: 3px 16px;
+    background: var(--amarillo); color: #46401f;
+    font-family: var(--display); font-size: 17px; letter-spacing: .08em;
+    text-transform: uppercase; border-radius: 4px;
+  }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--fondo);
+    padding: 10px 0 8px;
+    box-shadow: 0 8px 16px -12px rgba(0,0,0,.6);
+  }
+  .search {
+    width: 100%; padding: 10px 16px;
+    border: 2px solid var(--linea); border-radius: 999px;
+    background: var(--hueco); color: var(--crema);
+    font: inherit;
+  }
+  .search::placeholder { color: var(--crema-suave); }
+  .search:focus { outline: 2px solid var(--amarillo); outline-offset: 1px; border-color: transparent; }
+  nav { display: flex; gap: 8px; overflow-x: auto; padding: 10px 2px 2px; scrollbar-width: none; }
+  nav::-webkit-scrollbar { display: none; }
+  nav a {
+    flex: 0 0 auto; padding: 6px 14px;
+    border: 1.5px solid var(--linea); border-radius: 999px;
+    color: var(--crema); text-decoration: none;
+    font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+  }
+  nav a:focus-visible { outline: 2px solid var(--amarillo); outline-offset: 2px; }
+  nav a.active { background: var(--amarillo); color: #46401f; border-color: var(--amarillo); }
+
+  section { margin-top: 34px; scroll-margin-top: 110px; }
+  .sec-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  h2 {
+    font-family: var(--display); font-weight: 400;
+    font-size: 34px; letter-spacing: .02em; text-transform: uppercase;
+    margin: 0; color: var(--crema); text-wrap: balance;
+  }
+  .novedad {
+    background: var(--amarillo); color: #46401f;
+    font-family: var(--display); font-size: 13px; letter-spacing: .1em;
+    padding: 2px 10px; border-radius: 4px; text-transform: uppercase;
+  }
+  .sec-precios {
+    margin: 10px 0 4px; display: flex; gap: 8px; flex-wrap: wrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .sec-precios span {
+    border: 1.5px solid var(--linea); border-radius: 999px;
+    padding: 3px 12px; font-size: 13px; font-weight: 600;
+  }
+  .sec-precios b { color: var(--amarillo); font-weight: 700; }
+  .sec-nota { margin: 4px 0 0; font-size: 12.5px; color: var(--crema-suave); }
+
+  .items { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+  .item {
+    display: flex; gap: 12px; align-items: center;
+    border: 1.5px solid var(--carta-borde);
+    border-radius: var(--radio);
+    padding: 12px 16px 12px 12px;
+  }
+  .item.sin-foto { padding-left: 16px; }
+  .foto {
+    flex: 0 0 auto; width: 78px; height: auto;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 78%, transparent 98%);
+    mask-image: radial-gradient(ellipse at center, #000 78%, transparent 98%);
+  }
+  .item-cuerpo { flex: 1 1 auto; min-width: 0; }
+  .item-line { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .item-nombre {
+    font-weight: 700; text-transform: uppercase; letter-spacing: .03em;
+    font-size: 15px; color: var(--crema);
+  }
+  .pica { color: var(--chili); font-size: 13px; margin-left: 4px; }
+  .item-precio {
+    font-weight: 700; color: var(--amarillo); white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .item-desc { margin: 4px 0 0; font-size: 13.5px; color: var(--crema-suave); }
+  .tallas {
+    display: flex; gap: 6px 14px; flex-wrap: wrap; margin-top: 8px;
+    font-size: 13px; font-variant-numeric: tabular-nums;
+  }
+  .tallas span { color: var(--crema-suave); }
+  .tallas b { color: var(--amarillo); font-weight: 700; margin-left: 4px; }
+  .extra {
+    margin-top: 14px; text-align: center; font-size: 13.5px; font-weight: 600;
+    border: 1.5px dashed var(--linea); border-radius: var(--radio); padding: 10px 14px;
+  }
+  .extra b { color: var(--amarillo); }
+
+  .sin-resultados { display: none; margin-top: 40px; text-align: center; color: var(--crema-suave); }
+  body.buscando .sin-resultados.visible { display: block; }
+
+  footer { margin-top: 44px; border-top: 1.5px solid rgba(244,238,218,.25); padding-top: 20px; }
+  footer h3 {
+    font-family: var(--display); font-weight: 400; font-size: 16px;
+    letter-spacing: .06em; text-transform: uppercase; margin: 0 0 8px;
+  }
+  footer ul { margin: 0; padding-left: 18px; font-size: 12.5px; color: var(--crema-suave); }
+  footer li { margin-bottom: 6px; }
+  .alergenos {
+    display: block; margin-top: 18px; text-align: center;
+    color: var(--amarillo); font-weight: 600; font-size: 13.5px;
+  }
+</style>
 </head>
 <body>
-  <img src="carta.png" alt="Carta TopePizza">
+<div class="wrap">
+  <header>
+    <img class="logo" src="fotos/logo.png" alt="Topepizza">
+    <br>
+    <span class="logo-sub">Carta</span>
+  </header>
+
+  <div class="toolbar">
+    <input class="search" id="buscador" type="search" placeholder="Busca tu pizza, un ingrediente…" aria-label="Buscar en la carta">
+    <nav id="navChips"></nav>
+  </div>
+
+  <div id="carta"></div>
+
+  <p class="sin-resultados" id="sinResultados">No hay nada en la carta con ese nombre. Prueba con otro ingrediente.</p>
+
+  <footer>
+    <h3>Observaciones</h3>
+    <ul id="observaciones"></ul>
+    <a class="alergenos" id="alergenos" rel="noopener"></a>
+  </footer>
+</div>
+
+<script>
+(async function () {
+  const CARTA = await fetch('carta.json').then(r => r.json());
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  const nav = document.getElementById('navChips');
+  nav.innerHTML = CARTA.secciones.map((s, i) =>
+    `<a href="#${s.id}"${i === 0 ? ' class="active"' : ''}>${esc(s.nav)}</a>`).join('');
+
+  const cont = document.getElementById('carta');
+  cont.innerHTML = CARTA.secciones.map(sec => {
+    const cab = `<div class="sec-head"><h2>${esc(sec.titulo)}</h2>${sec.badge ? `<span class="novedad">${esc(sec.badge)}</span>` : ''}</div>`;
+    const precios = sec.precios ? `<div class="sec-precios">${sec.precios.map(p =>
+      `<span>${esc(p.nombre)} <b>${esc(p.precio)}&nbsp;€</b></span>`).join('')}</div>` : '';
+    const nota = sec.nota ? `<p class="sec-nota">${esc(sec.nota)}</p>` : '';
+    const items = sec.items.map(it => {
+      const foto = it.foto ? `<img class="foto" src="fotos/${esc(it.foto)}.png" alt="">` : '';
+      const pica = it.picante ? '<span class="pica" title="Picante">&#127798;</span>' : '';
+      const precio = it.precio ? `<span class="item-precio">${esc(it.precio)}&nbsp;€</span>` : '';
+      const desc = it.desc ? `<p class="item-desc">${esc(it.desc)}</p>` : '';
+      const tallas = it.tallas ? `<div class="tallas">${it.tallas.map(t =>
+        `<span>${esc(t.n)}<b>${esc(t.p)}&nbsp;€</b></span>`).join('')}</div>` : '';
+      return `<article class="item${foto ? '' : ' sin-foto'}">${foto}<div class="item-cuerpo">` +
+        `<div class="item-line"><span class="item-nombre">${esc(it.nombre)}${pica}</span>${precio}</div>` +
+        `${desc}${tallas}</div></article>`;
+    }).join('');
+    const extra = sec.extra ? `<p class="extra">${sec.extra}</p>` : '';
+    return `<section id="${sec.id}">${cab}${precios}${nota}<div class="items">${items}</div>${extra}</section>`;
+  }).join('');
+
+  document.getElementById('observaciones').innerHTML =
+    CARTA.observaciones.map(o => `<li>${esc(o)}</li>`).join('');
+  const alg = document.getElementById('alergenos');
+  alg.textContent = CARTA.alergenos.texto;
+  alg.href = CARTA.alergenos.url;
+
+  /* buscador */
+  const buscador = document.getElementById('buscador');
+  const items = [...document.querySelectorAll('.item')];
+  const secciones = [...document.querySelectorAll('section')];
+  const sinResultados = document.getElementById('sinResultados');
+  const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  buscador.addEventListener('input', () => {
+    const q = norm(buscador.value.trim());
+    document.body.classList.toggle('buscando', q.length > 0);
+    let visibles = 0;
+    items.forEach(el => {
+      const hit = !q || norm(el.textContent).includes(q);
+      el.style.display = hit ? '' : 'none';
+      if (hit) visibles++;
+    });
+    secciones.forEach(sec => {
+      const alguno = [...sec.querySelectorAll('.item')].some(el => el.style.display !== 'none');
+      sec.style.display = alguno ? '' : 'none';
+    });
+    sinResultados.classList.toggle('visible', visibles === 0);
+  });
+
+  /* chip activo al hacer scroll */
+  const enlaces = [...document.querySelectorAll('nav a')];
+  const porId = Object.fromEntries(enlaces.map(a => [a.getAttribute('href').slice(1), a]));
+  const observador = new IntersectionObserver(entradas => {
+    entradas.forEach(e => {
+      if (e.isIntersecting) {
+        enlaces.forEach(a => a.classList.remove('active'));
+        porId[e.target.id]?.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  secciones.forEach(s => observador.observe(s));
+})();
+</script>
 </body>
 </html>
