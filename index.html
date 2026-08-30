@@ -182,6 +182,10 @@
   const CARTA = await fetch('carta.json').then(r => r.json());
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+  // Decisión de José (30-08-2026): la carta pública NO muestra precios (los
+  // precios viven en carta.json y solo se imprimen en /lista/ de cada tienda).
+  const MOSTRAR_PRECIOS = false;
+
   const nav = document.getElementById('navChips');
   nav.innerHTML = CARTA.secciones.map((s, i) =>
     `<a href="#${s.id}"${i === 0 ? ' class="active"' : ''}>${esc(s.nav)}</a>`).join('');
@@ -189,21 +193,21 @@
   const cont = document.getElementById('carta');
   cont.innerHTML = CARTA.secciones.map(sec => {
     const cab = `<div class="sec-head"><h2>${esc(sec.titulo)}</h2>${sec.badge ? `<span class="novedad">${esc(sec.badge)}</span>` : ''}</div>`;
-    const precios = sec.precios ? `<div class="sec-precios">${sec.precios.map(p =>
+    const precios = MOSTRAR_PRECIOS && sec.precios ? `<div class="sec-precios">${sec.precios.map(p =>
       `<span>${esc(p.nombre)} <b>${esc(p.precio)}&nbsp;€</b></span>`).join('')}</div>` : '';
     const nota = sec.nota ? `<p class="sec-nota">${esc(sec.nota)}</p>` : '';
     const items = sec.items.map(it => {
       const foto = it.foto ? `<img class="foto" src="fotos/${esc(it.foto)}.png" alt="">` : '';
       const pica = it.picante ? '<span class="pica" title="Picante">&#127798;</span>' : '';
-      const precio = it.precio ? `<span class="item-precio">${esc(it.precio)}&nbsp;€</span>` : '';
+      const precio = MOSTRAR_PRECIOS && it.precio ? `<span class="item-precio">${esc(it.precio)}&nbsp;€</span>` : '';
       const desc = it.desc ? `<p class="item-desc">${esc(it.desc)}</p>` : '';
       const tallas = it.tallas ? `<div class="tallas">${it.tallas.map(t =>
-        `<span>${esc(t.n)}<b>${esc(t.p)}&nbsp;€</b></span>`).join('')}</div>` : '';
+        `<span>${esc(t.n)}${MOSTRAR_PRECIOS ? `<b>${esc(t.p)}&nbsp;€</b>` : ''}</span>`).join('')}</div>` : '';
       return `<article class="item${foto ? '' : ' sin-foto'}">${foto}<div class="item-cuerpo">` +
         `<div class="item-line"><span class="item-nombre">${esc(it.nombre)}${pica}</span>${precio}</div>` +
         `${desc}${tallas}</div></article>`;
     }).join('');
-    const extra = sec.extra ? `<p class="extra">${sec.extra}</p>` : '';
+    const extra = MOSTRAR_PRECIOS && sec.extra ? `<p class="extra">${sec.extra}</p>` : '';
     return `<section id="${sec.id}">${cab}${precios}${nota}<div class="items">${items}</div>${extra}</section>`;
   }).join('');
 
