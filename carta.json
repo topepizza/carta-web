@@ -17,10 +17,10 @@
       "precios": [
         {
           "nombre": "Mediana",
-          "precio": "13,50"
+          "precio": "10,95"
         }
       ],
-      "nota": "TopeMasa fina o esponjosa.",
+      "nota": "TopeMasa fina o esponjosa, 30 cm.",
       "extra": "Añade <b>Krispy Bacon</b> por <b>+1,50 €</b>",
       "items": [
         {
@@ -80,19 +80,19 @@
         {
           "nombre": "Crispy BBQ",
           "foto": "pan_crispy",
-          "precio": "13,25",
+          "precio": "11,25",
           "desc": "Salsa bbq especial, mozzarella, bacon crispy, pollo braseado, cebolla y aceite de oliva."
         },
         {
           "nombre": "Topebic Mac",
           "foto": "pan_topebic",
-          "precio": "12,95",
+          "precio": "10,95",
           "desc": "Doble de Salsa BigM, mozzarella, bacon crispy, ternera, cebolla y aceite de oliva."
         },
         {
           "nombre": "Chili Oriental",
           "foto": "pan_chili",
-          "precio": "11,65",
+          "precio": "9,65",
           "picante": true,
           "desc": "Salsa de Chili Dulce, mozzarella, pollo braseado, cebolla, pimiento verde, rojo y aceite de oliva."
         }
@@ -105,10 +105,10 @@
       "precios": [
         {
           "nombre": "Mediana",
-          "precio": "15,50"
+          "precio": "13,95"
         }
       ],
-      "nota": "TopeMasa fina o esponjosa.",
+      "nota": "TopeMasa fina o esponjosa, 30 cm.",
       "items": [
         {
           "nombre": "Divina",
@@ -154,19 +154,19 @@
           "tallas": [
             {
               "n": "4 ud",
-              "p": "5,90"
+              "p": "4,90"
             },
             {
               "n": "6 ud",
-              "p": "7,75"
+              "p": "6,75"
             },
             {
               "n": "8 ud",
-              "p": "9,50"
+              "p": "8,50"
             },
             {
               "n": "10 ud",
-              "p": "11,50"
+              "p": "10,50"
             }
           ]
         },
@@ -176,35 +176,35 @@
           "tallas": [
             {
               "n": "4 ud",
-              "p": "6,50"
+              "p": "5,50"
             },
             {
               "n": "6 ud",
-              "p": "8,95"
+              "p": "7,95"
             },
             {
               "n": "8 ud",
-              "p": "11,35"
+              "p": "10,35"
             },
             {
               "n": "10 ud",
-              "p": "13,50"
+              "p": "12,50"
             }
           ]
         },
         {
           "nombre": "Papa Bacon",
-          "precio": "10,95",
+          "precio": "8,95",
           "desc": "Patatas fritas, bacon crispy, mezcla de quesos y salsa ranchera. Todo ello gratinado al horno."
         },
         {
           "nombre": "Papa Trufiñas",
-          "precio": "11,95",
+          "precio": "9,95",
           "desc": "Patatas fritas, mezcla de quesos, salsa de trufa, bacon crispy, pollo braseado. Todo ello gratinado al horno."
         },
         {
           "nombre": "Papa Kebab",
-          "precio": "11,95",
+          "precio": "9,95",
           "desc": "Patatas fritas, carne de kebab de pollo de calidad, salsa roja especial y salsa de yogurt."
         },
         {
@@ -230,17 +230,22 @@
       "items": [
         {
           "nombre": "Gochis “Chips Ahoy”",
-          "desc": "Esponjosas bolitas de masa frita con crema de chocolate, crema de chocolate blanco y topping de Chips Ahoy.",
+          "desc": "Esponjosas bolitas de masa frita con crema de nocilla y topping de Chips Ahoy.",
           "tallas": [
             {
               "n": "Normal 8 ud",
-              "p": "6,25"
+              "p": "5,25"
             },
             {
               "n": "Doble 16 ud",
-              "p": "8,95"
+              "p": "7,95"
             }
           ]
+        },
+        {
+          "nombre": "Tarrinas de helado 120 ml",
+          "precio": "2,50",
+          "desc": "Sabores: vainilla chocolate y vainilla frambuesa."
         }
       ]
     },
@@ -251,12 +256,12 @@
       "items": [
         {
           "nombre": "Refrescos",
-          "precio": "2,50",
+          "precio": "2,00",
           "desc": "Formato lata 33 cl: Coca-Cola, Coca-Cola Zero, Coca-Cola zero zero, Fanta naranja, Nestea, Aquarius, Damm Lemon, 0,0 tostada y cerveza."
         },
         {
           "nombre": "Agua 50 cl",
-          "precio": "2,00"
+          "precio": "1,90"
         }
       ]
     }
