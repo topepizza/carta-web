@@ -1,0 +1,20 @@
+[
+  {
+    "id": "topecastilla",
+    "razon": "TOPE CASTILLA S.COOP",
+    "direccion": "Calle Cobre, 1 · 34005 Palencia",
+    "cif": "F09757469"
+  },
+  {
+    "id": "topeparquesol",
+    "razon": "TOPEPARQUESOL S.COOP",
+    "direccion": "Calle Manuel Azaña, 17, puerta 7 · 47014 Valladolid",
+    "cif": "F19778620"
+  },
+  {
+    "id": "zagales-duenas",
+    "razon": "ZAGALES DUEÑAS, S.L.",
+    "direccion": "Calle Zagales, 10 - BJ · 34210 Dueñas (Palencia)",
+    "cif": "B09927534"
+  }
+]

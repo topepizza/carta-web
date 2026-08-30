@@ -1,0 +1,283 @@
+{
+  "actualizado": "2026-08-30",
+  "alergenos": {
+    "texto": "Consulta los alérgenos en topepizza.es",
+    "url": "https://topepizza.es"
+  },
+  "observaciones": [
+    "Los productos no se modifican al gusto, no se ajustan ni tiempos de cocción ni cantidades de ingredientes. Cada producto de la carta se entrega como Topepizza establece.",
+    "El extra de queso se cobrará siempre a parte: 1,50 €.",
+    "Ingredientes extra en cualquier artículo +1,50 €. No se sustituyen ingredientes en las especialidades."
+  ],
+  "secciones": [
+    {
+      "id": "pizzas",
+      "titulo": "Pizzas",
+      "nav": "Pizzas",
+      "precios": [
+        {
+          "nombre": "Mediana",
+          "precio": "10,95"
+        }
+      ],
+      "nota": "TopeMasa fina o esponjosa, 30 cm.",
+      "extra": "Añade <b>Krispy Bacon</b> por <b>+1,50 €</b>",
+      "items": [
+        {
+          "nombre": "De la Huerta",
+          "foto": "p_huerta",
+          "desc": "Salsa de tomate, mozzarella, pimiento verde y rojo, cebolla, tomate natural, champiñón fresco y aceituna negra."
+        },
+        {
+          "nombre": "Campesina",
+          "foto": "p_campesina",
+          "desc": "Salsa de tomate, mozzarella, bacon ahumado, pollo braseado, champiñón fresco, pimiento rojo, cebolla y aceituna negra."
+        },
+        {
+          "nombre": "La Donna",
+          "foto": "p_donna",
+          "desc": "Salsa de tomate, mozzarella, bacon ahumado, atún, tomate natural, aceituna negra y toque de salsa cocktail. (Para los amantes de la ensaladilla rusa)"
+        },
+        {
+          "nombre": "Carnívora",
+          "foto": "p_carnivora",
+          "desc": "Salsa de tomate, mozzarella, bacon ahumado, jamón york, ternera y peperoni."
+        },
+        {
+          "nombre": "Cabrita",
+          "foto": "p_cabrita",
+          "desc": "Salsa de tomate, mozzarella, doble de bacon ahumado, queso de cabra y toque de miel."
+        },
+        {
+          "nombre": "5 Quesos",
+          "foto": "p_5quesos",
+          "desc": "Salsa de tomate, mezcla de tres quesos, mozzarella y cabra."
+        },
+        {
+          "nombre": "Pollo al Ajillo",
+          "foto": "p_pollo",
+          "desc": "Salsa suave de ajo, mozzarella, pollo braseado, pimiento verde, aceituna negra."
+        },
+        {
+          "nombre": "Pechuguita",
+          "foto": "p_pechuguita",
+          "desc": "Salsa bechamel, mozzarella, bacon y pollo braseado."
+        },
+        {
+          "nombre": "Barbacoa",
+          "foto": "p_barbacoa",
+          "desc": "Especial salsa barbacoa, mozzarella, bacon ahumado, cebolla, ternera y pollo braseado."
+        }
+      ]
+    },
+    {
+      "id": "panisimas",
+      "titulo": "Gama Las Panisimas",
+      "nav": "Panisimas",
+      "badge": "Novedad",
+      "nota": "TopeMasa pan, super jugosa y crujiente por igual. ¡Otro level! · Tamaño: 24 cm",
+      "items": [
+        {
+          "nombre": "Crispy BBQ",
+          "foto": "pan_crispy",
+          "precio": "11,25",
+          "desc": "Salsa bbq especial, mozzarella, bacon crispy, pollo braseado, cebolla y aceite de oliva."
+        },
+        {
+          "nombre": "Topebic Mac",
+          "foto": "pan_topebic",
+          "precio": "10,95",
+          "desc": "Doble de Salsa BigM, mozzarella, bacon crispy, ternera, cebolla y aceite de oliva."
+        },
+        {
+          "nombre": "Chili Oriental",
+          "foto": "pan_chili",
+          "precio": "9,65",
+          "picante": true,
+          "desc": "Salsa de Chili Dulce, mozzarella, pollo braseado, cebolla, pimiento verde, rojo y aceite de oliva."
+        }
+      ]
+    },
+    {
+      "id": "supreme",
+      "titulo": "Gama Supreme",
+      "nav": "Supreme",
+      "precios": [
+        {
+          "nombre": "Mediana",
+          "precio": "13,95"
+        }
+      ],
+      "nota": "TopeMasa fina o esponjosa, 30 cm.",
+      "items": [
+        {
+          "nombre": "Divina",
+          "foto": "s_divina",
+          "desc": "Mezcla de salsa barbacoa y salsa de ajo, bacon crispy, pollo braseado, champiñón fresco, pimiento verde y cebolla."
+        },
+        {
+          "nombre": "Deluxe",
+          "foto": "s_deluxe",
+          "desc": "Salsa especial barbacoa, mozzarella, bacon crispy, ternera, queso de cabra y toque de miel."
+        },
+        {
+          "nombre": "Pendeja",
+          "foto": "s_pendeja",
+          "picante": true,
+          "desc": "Mezcla de salsa de ajo y salsa brava, bacon crispy, kebab de pollo, cebolla y pimiento verde."
+        },
+        {
+          "nombre": "Doña Burger",
+          "foto": "s_dona",
+          "desc": "Deliciosa salsa burger, mozzarella, bacon crispy, ternera, tomate natural, cebolla y toque de mezcla de quesos."
+        },
+        {
+          "nombre": "Mamatrufa",
+          "foto": "s_mamatrufa",
+          "desc": "Salsa especial trufa, mozzarella, pollo braseado, champiñón fresco y toque de cebolla caramelizada."
+        },
+        {
+          "nombre": "Terriblona",
+          "foto": "s_terriblona",
+          "desc": "Especial salsa barbacoa, mozzarella, tomate natural, cebolla, kebab de pollo y toque de salsa de yogurt."
+        }
+      ]
+    },
+    {
+      "id": "complementos",
+      "titulo": "Complementos",
+      "nav": "Complementos",
+      "items": [
+        {
+          "nombre": "Tope Nuggets",
+          "desc": "Deliciosos y crujientes cortes de pechuga de pollo elaborados diariamente en el mismo local.",
+          "tallas": [
+            {
+              "n": "4 ud",
+              "p": "4,90"
+            },
+            {
+              "n": "6 ud",
+              "p": "6,75"
+            },
+            {
+              "n": "8 ud",
+              "p": "8,50"
+            },
+            {
+              "n": "10 ud",
+              "p": "10,50"
+            }
+          ]
+        },
+        {
+          "nombre": "Tope Alitas",
+          "desc": "Sabrosas alitas marinadas, ligeramente picantes.",
+          "tallas": [
+            {
+              "n": "4 ud",
+              "p": "5,50"
+            },
+            {
+              "n": "6 ud",
+              "p": "7,95"
+            },
+            {
+              "n": "8 ud",
+              "p": "10,35"
+            },
+            {
+              "n": "10 ud",
+              "p": "12,50"
+            }
+          ]
+        },
+        {
+          "nombre": "Papa Bacon",
+          "precio": "8,95",
+          "desc": "Patatas fritas, bacon crispy, mezcla de quesos y salsa ranchera. Todo ello gratinado al horno."
+        },
+        {
+          "nombre": "Papa Trufiñas",
+          "precio": "9,95",
+          "desc": "Patatas fritas, mezcla de quesos, salsa de trufa, bacon crispy, pollo braseado. Todo ello gratinado al horno."
+        },
+        {
+          "nombre": "Papa Kebab",
+          "precio": "9,95",
+          "desc": "Patatas fritas, carne de kebab de pollo de calidad, salsa roja especial y salsa de yogurt."
+        },
+        {
+          "nombre": "Tope Bombajo",
+          "desc": "Deliciosos panecillos de ajo con queso.",
+          "tallas": [
+            {
+              "n": "Normal",
+              "p": "5,90"
+            },
+            {
+              "n": "Doble",
+              "p": "9,95"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "postres",
+      "titulo": "Postres",
+      "nav": "Postres",
+      "items": [
+        {
+          "nombre": "Gochis “Chips Ahoy”",
+          "desc": "Esponjosas bolitas de masa frita con crema de nocilla y topping de Chips Ahoy.",
+          "tallas": [
+            {
+              "n": "Normal 8 ud",
+              "p": "5,25"
+            },
+            {
+              "n": "Doble 16 ud",
+              "p": "7,95"
+            }
+          ]
+        },
+        {
+          "nombre": "Tarrinas de helado 120 ml",
+          "precio": "2,50",
+          "desc": "Sabores: vainilla chocolate y vainilla frambuesa."
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "titulo": "Drinks",
+      "nav": "Drinks",
+      "items": [
+        {
+          "nombre": "Refrescos",
+          "precio": "2,00",
+          "desc": "Formato lata 33 cl: Coca-Cola, Coca-Cola Zero, Coca-Cola zero zero, Fanta naranja, Nestea, Aquarius, Damm Lemon, 0,0 tostada y cerveza."
+        },
+        {
+          "nombre": "Agua 50 cl",
+          "precio": "1,90"
+        }
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "nombre": "Krispy Bacon (en pizzas de carta base)",
+      "precio": "1,50"
+    },
+    {
+      "nombre": "Extra de queso",
+      "precio": "1,50"
+    },
+    {
+      "nombre": "Ingrediente extra",
+      "precio": "1,50"
+    }
+  ]
+}
