@@ -38,3 +38,9 @@ Los cambios de precios y modificaciones están registrados en:
 ## ⚙️ Estado
 
 Proyecto en producción y actualizado.
+
+## Despliegue (kill-switch)
+
+`git push` NO despliega. Vercel solo construye si el TÍTULO del commit
+contiene el marker `[deploy]` (ver `ignoreCommand` en `vercel.json`).
+Un push normal → build cancelado → 0€. Aplica a preview y a producción.
